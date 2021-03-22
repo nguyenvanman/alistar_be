@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: postgresql
+  port: 5432
+  username: postgres
+  password: password
+
+development:
+  <<: *default
+  database: alistar_be_dev
+
+test:
+  <<: *default
+  database: alistar_be_test
+
+production:
+  <<: *default
+  database: alistar_be_prod
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
